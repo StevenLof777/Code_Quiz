@@ -1,5 +1,10 @@
 #navbar {
-    display: flex;
+    display: inline-block;
     padding: 1rem;
     background: grey;
+    width: 100%;
+}
+
+#timeLeft {
+    float: right;
 }

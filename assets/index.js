@@ -72,4 +72,83 @@
         }
 
         setTime();
-       
+
+//o. Make a start button
+        a. Start button as the beginning point 
+        b. we need to make the start button disappear
+                use .remove() method
+        c. needs to call whatever the function for the setInterval is
+        
+
+//1. putt the q/a's in an array
+[
+question = {
+        question: 'how old are your?',
+        choices: ['a', 'b', 'c', 'd',],
+        answer: 'a'
+},
+question = {
+        question: 'how old are your?',
+        choices: ['a', 'b', 'c', 'd',],
+        answer: 'a'
+},
+question = {
+        question: 'how old are your?',
+        choices: ['a', 'b', 'c', 'd',],
+        answer: 'a'
+},
+question = {
+        question: 'how old are your?',
+        choices: ['a', 'b', 'c', 'd',],
+        answer: 'a'
+},
+question = {
+        question: 'how old are your?',
+        choices: ['a', 'b', 'c', 'd',],
+        answer: 'a'
+},
+]   
+
+2. How do i make a for loop that iterates through the array and displays
+the questions
+
+for (var i = 0; i <questionBank.length; i++) {
+        var question = questionBank[i].question
+        var choices = questionBank[i].choices
+        var answer = questionBank[i].answer
+
+        target some element on the page using querySelector and use
+        textContent to display that question or choices or answers
+        to the page?
+}
+
+3. How do I check and see if the chosen answer is correct?
+        a. Generate an element that is a button 
+        b. For each ofthe button, attach an addEventListener
+        c. and for whichever it is clicked on, check against the answer
+        while using if else statements
+
+4. Calculate score
+        a. if wrong you dont get a point
+        b. if correct then you get one point
+
+5. Need a timer to count down
+        a.setInterval
+        b.some kind of var with some random number in it  
+        c.we would subtract by 1 
+        d.we Run some kind of logic inside of the count
+        e. check the soltion to the user Input 
+                * If/Else if not correct, subtract time.
+        f. when the timer goes to zero then 
+                *Display youre all done
+                *Display score 
+                *Ask for initials
+                *go to another page that shows the scores
+
+6. Store the score to the browser
+        a. LOCAL STORAGE 
+        b. After we input in our intials, want to save our score and our
+        initials to the local Storage
+        c. use localStorage.setItem('score', value);
+                * {initial: THING WE TYPE, highscore: number}
+                localStorage.setItem('userScore', JSON.stringify(object))
