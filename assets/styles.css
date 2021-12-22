@@ -1,10 +1,51 @@
 #navbar {
-    display: inline-block;
-    padding: 1rem;
-    background: grey;
+    padding: .5rem;
+    background: rgb(39, 96, 134);
     width: 100%;
+    color: white;
 }
 
-#timeLeft {
+#highScores {
+    text-decoration: none;
+    color: white;
     float: right;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+.container {
+    background-color: white;
+    padding: .5rem;
+    border-radius: .2rem;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    margin-top: 1rem;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+button {
+    margin: .2rem;
+}
+
+.home {
+    text-decoration: none;
+    color: black;
+}
+
+.hide {
+    display: none;
 }

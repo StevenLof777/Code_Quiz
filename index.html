@@ -11,29 +11,27 @@
 <body>
     <!-- In the nav I should be able to see the time left and "view highscores" -->
     <nav id="navbar">
-        <button id="highScores">View Highscores</button>
-        <div id="timeLeft">Time:</div>
+        <a href="viewscores.html" id="highScores">View Highscores</a>
+        <div>Time:<div class="displayTime"></div class="displayTime"></div>
     </nav>
-    <!-- separate div
-        I need to set up divs that hold questions change on addEventListener-->
-            <div class="prompts">
-
+    <div class="container">
+        <div id="question-container" class="hide">
+            <div id="questtion">Questions go here </div>
+            <div id='answer-buttons' class="btn-grid">
+                <button class="btn">a.</button>
+                <button class="btn">b.</button>
+                <button class="btn">c.</button>
+                <button class="btn">d.</button>
             </div>
-    <!-- separate div
-        Buttons should be below the questions -->
-        <div class="answerChoices">
-
+            <div class="showTruth"></div>
+            <div class="inputName"></div>
         </div>
-
-    <!-- separate
-        Below the buttons should show if the answer was correct once a button is picked -->
-        <div class="showTruth">
-
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">START</button>
+            <button id="next-btn" class="next-btn btn hide">NEXT</button>
+            <button><a href="" class="home">HOME</a></button>
         </div>
-        <!-- save data in the local storage -->
-
-    <!--separate div
-         At the end of the quiz i should receive a form/function that receives a name -->
+    </div>
     <script src="/assets/index.js"></script>
 </body>
 </html>
