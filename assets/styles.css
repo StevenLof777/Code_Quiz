@@ -1,14 +1,26 @@
 #navbar {
     padding: .5rem;
-    background: rgb(39, 96, 134);
+    background: white;
     width: 100%;
-    color: white;
+    color: purple;
 }
 
 #highScores {
     text-decoration: none;
-    color: white;
+    color: purple;
     float: right;
+}
+
+button {
+    border: none;
+    background-color: purple;
+    color: white;
+    padding: .5rem;
+    border-radius: .3rem;
+}
+
+button:hover {
+    background-color: violet;
 }
 
 body {
@@ -19,7 +31,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: grey;
+    background-color: white;
 }
 
 .container {
@@ -27,9 +39,10 @@ body {
     padding: .5rem;
     border-radius: .2rem;
     margin: auto;
-    width: 60%;
+    max-width: 600px;
     padding: 10px;
     margin-top: 1rem;
+    border: dotted grey .1rem;
 }
 
 .btn-grid {
@@ -43,7 +56,7 @@ button {
 
 .home {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .hide {
