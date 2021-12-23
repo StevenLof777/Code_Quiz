@@ -82,26 +82,33 @@
 //     -> JSON.parse(localStorage.getItem('userScore'));
 
 var displayTime = document.querySelector('.displayTime')
-var timerCount = 3;
-var startButton = document.querySelector('.start-btn');
-var questionContainerElement = document.getElementById('question-container')
-var questionElement = document.getElementById('question')
-// var answerButtonsElement = document.getElementById('answer-buttons')
-var btn1 = document.querySelectorAll('.btn1')
-var btn2 = document.querySelectorAll('.btn2')
-var btn3 = document.querySelectorAll('.btn3')
-var btn4 = document.querySelectorAll('.btn4')
+var timerCount = 10;
+var header = document.querySelector('.header')
+const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
+const questionContainerElement = document.getElementById('question-container')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
+var wrongAnswer = document.querySelector('.wrong')
+var correctAnswer = document.querySelector('.correct')
+let shuffledQuestions, currentQuestionIndex
 
+startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
 
-startButton.addEventListener('click', startQuiz)
+})
 
-function startQuiz () {
-        console.log('Start Quiz');
-        startButton.classList.add('hide')
-        questionContainerElement.classList.remove('hide')
-        startTimer();
-        nextQuestion();
-};
+function startGame() {
+  startButton.classList.add('hide')
+  shuffledQuestions = questions.sort(() => Math.random() - .5)
+  currentQuestionIndex = 0
+  header.classList.add('hide')
+  questionContainerElement.classList.remove('hide')
+  setNextQuestion()
+  startTimer()  
+}
 
 function startTimer() {
   timer = setInterval(function() {
@@ -113,47 +120,110 @@ function startTimer() {
   }, 1000);
 }
 
-function nextQuestion () {
- for (i = 0; i < questionBank.length; i++) {
-  questionElement.textContent = questionBank[i].question;
- };
- displayChoices();
-};
+function setNextQuestion() {
+  resetState()
+  showQuestion(shuffledQuestions[currentQuestionIndex])
 
-
-function displayChoices(){
-  btn1.textContent = 'words';
-  btn2.textContent = 'words';
-  btn3.textContent = 'words';
-  btn4.textContent = 'words';
 }
 
+function showQuestion(question) {
+  questionElement.innerText = question.question
+  question.answers.forEach(answer => {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    if (answer.correct) {
+      button.dataset.correct = answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonsElement.appendChild(button)
+  })
+}
 
+function resetState() {
+  clearStatusClass()
+  // nextButton.classList.add('hide')
+  while (answerButtonsElement.firstChild)
+  answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+}
 
-var questionBank = [
-{
-  question: 'What is 1 + 1?',
-  choices: ['a', 'b', 'c', 'd',],
-  answer: 'a'
-},
-{
-  question: 'What is 1 + 2?',
-  choices: ['a', 'b', 'c', 'd',],
-  answer: 'a'
-},
-{
-  question: 'What is the chemical compound for water?',
-  choices: ['a', 'b', 'c', 'd',],
-  answer: 'a'
-},
-{
-  question: 'What is javascript?',
-  choices: ['a', 'b', 'c', 'd',],
-  answer: 'a'
-},
-{
-  question: 'What are computers?',
-  choices: ['a', 'b', 'c', 'd',],
-  answer: 'a'
-},
-];
+function selectAnswer(e) {
+  const selectedButton = e.target
+  console.log(selectedButton)
+  const correct = selectedButton.dataset.correct
+  console.log(correct)
+  setStatusClass(correct)
+  // Array.from(answerButtonsElement.children).forEach(button => {
+  
+  //   setStatusClass(button, button.dataset.correct)
+  // })
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    // nextButton.classList.remove('hide')
+    currentQuestionIndex++
+    // clearStatusClass();
+    setNextQuestion();
+  } else {
+    startButton.innerText = "Restart"
+    startButton.classList.remove('hide')
+  }
+  
+}
+
+function setStatusClass(correct) {
+  console.log(correct)
+  // clearStatusClass(element)
+  if (correct) {
+    correctAnswer.classList.remove('hide')
+    // correctAnswer.classList.add('show')
+  } else {
+    console.log('This is the wrong answer')
+    wrongAnswer.classList.remove('hide')
+    // wrongAnswer.classList.add('show')
+  }
+}
+
+function clearStatusClass(element) {
+  correctAnswer.classList.add('hide')
+  wrongAnswer.classList.add('hide')
+  correctAnswer.classList.remove('show')
+  wrongAnswer.classList.remove('show')
+}
+ 
+const questions = [
+  {
+    question: 'What is 1 + 1?',
+    answers: [
+      {text: '1', correct: true},
+      {text: '3', correct: false},
+      {text: '55', correct: false},
+      {text: '10', correct: false}
+    ]
+  },
+  {
+    question: 'What is 1 + 3?',
+    answers: [
+      {text: '8', correct: false},
+      {text: '9', correct: true},
+      {text: '12', correct: false},
+      {text: 'yeah', correct: false}
+    ]
+  },
+  {
+    question: 'What is 1 + 4?',
+    answers: [
+      {text: '8', correct: false},
+      {text: '99', correct: false},
+      {text: '1', correct: true},
+      {text: '20', correct: false}
+    ]
+  },
+  {
+    question: 'What is 1 + 5?',
+    answers: [
+      {text: '11', correct: true},
+      {text: '23', correct: false},
+      {text: '85', correct: false},
+      {text: '97', correct: false}
+    ]
+  },
+]

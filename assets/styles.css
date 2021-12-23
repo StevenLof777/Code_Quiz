@@ -37,12 +37,12 @@ body {
 .container {
     background-color: white;
     padding: .5rem;
-    border-radius: .2rem;
+    border-radius: .4rem;
     margin: auto;
     max-width: 600px;
-    padding: 10px;
+    padding: 1rem;
     margin-top: 1rem;
-    border: dotted grey .1rem;
+    border: dotted grey .15rem;
 }
 
 .btn-grid {
@@ -61,4 +61,20 @@ button {
 
 .hide {
     display: none;
+}
+
+.show {
+    display: block;
+}
+
+
+.correct, .wrong {
+    font-style: italic;
+    border-top: grey solid .1rem;
+    color: grey;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
 }
