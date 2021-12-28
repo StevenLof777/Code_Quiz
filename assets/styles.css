@@ -42,7 +42,7 @@ body {
     max-width: 600px;
     padding: 1rem;
     margin-top: 1rem;
-    border: dotted grey .15rem;
+    /* border: dotted grey .15rem; */
 }
 
 .btn-grid {
@@ -63,9 +63,6 @@ button {
     display: none;
 }
 
-.show {
-    display: block;
-}
 
 
 .correct, .wrong {
@@ -77,4 +74,13 @@ button {
 header {
     text-align: center;
     margin-bottom: 1rem;
+}
+
+#score-list {
+    /* text-align: center; */
+}
+
+.name {
+    background-color: rgba(128, 128, 128, 0.137);
+    padding: .5rem;
 }

@@ -123,7 +123,7 @@ function startTimer() {
 function setNextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
-
+  setTimeout()
 }
 
 function showQuestion(question) {
@@ -141,7 +141,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
-  clearStatusClass()
+  // clearStatusClass()
   // nextButton.classList.add('hide')
   while (answerButtonsElement.firstChild)
   answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -158,10 +158,12 @@ function selectAnswer(e) {
   //   setStatusClass(button, button.dataset.correct)
   // })
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    setTimeout( () => {
     // nextButton.classList.remove('hide')
     currentQuestionIndex++
-    // clearStatusClass();
+    clearStatusClass();
     setNextQuestion();
+  }, 1000)
   } else {
     startButton.innerText = "Restart"
     startButton.classList.remove('hide')
@@ -174,19 +176,18 @@ function setStatusClass(correct) {
   // clearStatusClass(element)
   if (correct) {
     correctAnswer.classList.remove('hide')
-    // correctAnswer.classList.add('show')
+
   } else {
     console.log('This is the wrong answer')
     wrongAnswer.classList.remove('hide')
-    // wrongAnswer.classList.add('show')
+   
   }
 }
 
 function clearStatusClass(element) {
   correctAnswer.classList.add('hide')
   wrongAnswer.classList.add('hide')
-  correctAnswer.classList.remove('show')
-  wrongAnswer.classList.remove('show')
+
 }
  
 const questions = [
